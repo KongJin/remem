@@ -10,15 +10,15 @@ export class AppService {
       return books;
     } catch {}
   }
-  async postBook(): Promise<string> {
+  async postBook(title: string): Promise<Book> {
     try {
-      await client.book.create({
+      const book = await client.book.create({
         data: {
-          title: 'gg',
+          title,
           year: 1996,
         },
       });
+      return book;
     } catch {}
-    return 'Hello World!';
   }
 }
